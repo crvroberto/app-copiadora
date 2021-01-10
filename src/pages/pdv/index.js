@@ -8,17 +8,23 @@ import Table from '../../components/Table/Table'
 
 function Pdv (){
  
-    const [tabela, setTabela] = useState([{name: false}]);
-    function addTable (params) {
-
-        return setTabela({...params})
+    const [tabela, setTabela] = useState([]);
+   
+    function addTable (params) {    
+        
+        return setTabela([...tabela, {...params}])
     }
-
+    function removeTable(params,indice) {
+       
+        tabela.splice(indice,1)
+        setTabela([...tabela])
+        console.log(tabela)
+    }
     return(
         <React.Fragment>
         <Menubar></Menubar>
         <List produtos={Produtos} addTable={addTable} ></List>
-        <Table tabela={tabela}></Table>
+        <Table tabela={tabela} remove={removeTable}></Table>
         </React.Fragment>
     )
 }

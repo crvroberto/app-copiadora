@@ -1,7 +1,8 @@
 import React,{useState} from 'react'
 
 function List (props) {
-    //testando
+   
+    
 const [btn, setBtn] = useState({
     name: false
 })
@@ -59,12 +60,12 @@ return(
 
 function Val (obj){
     
-    
+  
     function Enter (event) {
         if(event.keyCode === 13 && event.target.value > 0) {
            obj.val.quantidade = event.target.value
-           console.log(obj)
-           props.addTable([obj.val])
+           
+           props.addTable(obj.val)
         }
     
     }   

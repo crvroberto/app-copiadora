@@ -1,8 +1,8 @@
 
     const produtos =  [
         {name: 'IMPRESSÃO', subproduto: [
-            {name: 'Preto'},
-            {name: 'Colorido'}, ]}
+            {id: 'preto01',name: 'Preto', preco: []},
+            {id: 'colorido01' , name: 'Colorido'}, ]}
             ,
         {name: 'BOLETO', subproduto: [
             {name: 'Fatura'},
