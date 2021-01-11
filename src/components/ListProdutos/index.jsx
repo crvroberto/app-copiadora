@@ -10,20 +10,25 @@ const [val, setVal] = useState({
     name: false
 })
 
+function Limparstates(e) {
+    setBtn({name:false})
+    setVal({name: false})
+    e.target.value = ''
 
+}
 function Valuesearch(value){
     
 
     const search = value.target.value
     
-    props.produtos.map(function(product) { 
-        if(product.name == search) {
+   return (props.produtos.map(function(product) { 
+        if(product.name === search) {
             
-            Addbuttons(product)
+          return  Addbuttons(product)
             
         }
 
-    })
+    }))
 
    
 }
@@ -35,6 +40,14 @@ function Addbuttons(params) {
 }
 function AddVal(params) {
 
+    if(params.button === undefined) {
+        let mudarbtn = {name: 'teste', subproduto : [params]}
+        
+        setBtn(mudarbtn)
+
+     
+        
+    }
     
     return setVal(params)
   
@@ -85,7 +98,7 @@ return (
     <React.Fragment>
     <input type='search' placeholder ='Produtos e Serviços' 
     id='pesquisa' list='lista' className='form-control dark'
-    onChange={Valuesearch.bind()}
+    onChange={Valuesearch.bind()} onClick={Limparstates.bind()}
     />
 
     <datalist id='lista'>
