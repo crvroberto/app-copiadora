@@ -1,17 +1,23 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import Menubar from '../../components/MenuBar/index'
+import axios from 'axios'
 
 
-function home (){
+function Home (){
+  
+
+
+
 
 
     return(
         <React.Fragment>
         <Menubar></Menubar>
-       
-    
+        
+      
+        
         </React.Fragment>
     )
 }
 
-export default home
+export default Home

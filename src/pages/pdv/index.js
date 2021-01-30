@@ -6,6 +6,7 @@ import List from '../../components/ListProdutos/'
 import Table from '../../components/Table/Table'
 import Total from '../../components/Total Produtos/TotallProdutos'
 import Obs from '../../components/Modal/ModalObservacao'
+import Testeapi from '../../components/testeapi'
 
 function Pdv (){
     document.body.onkeydown = function(e) {
@@ -24,7 +25,7 @@ function Pdv (){
        
         tabela.splice(indice,1)
         setTabela([...tabela])
-        console.log(tabela)
+        
     }
     return(<div>
         <React.Fragment >
@@ -33,6 +34,7 @@ function Pdv (){
         <Table tabela={tabela} remove={removeTable} setTabela={setTabela}></Table>
         <Total tabela={tabela}></Total>
         <Obs></Obs>
+        <Testeapi></Testeapi>
         </React.Fragment>
         </div>
     )

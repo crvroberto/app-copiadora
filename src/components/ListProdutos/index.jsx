@@ -3,12 +3,8 @@ import React, { useState } from 'react'
 function List(props) {
 
 
-    const [btn, setBtn] = useState({
-        name: false
-    })
-    const [val, setVal] = useState({
-        name: false
-    })
+    const [btn, setBtn] = useState({name: false })
+    const [val, setVal] = useState({name: false })
 
     function Limparstates(e) {
         setBtn({ name: false })
@@ -17,21 +13,12 @@ function List(props) {
 
     }
     function Valuesearch(value) {
-        const search = value.target.value
-
-        return (props.produtos.map(function (product) {
-            if (product.name === search) {
-
-                return Addbuttons(product)
-
-            }
-
-        }))
-
-
+        
+        const objsearch = props.produtos.find(product => product.name === value.target.value)
+        objsearch === undefined ? console.log('Valuesearch') : setBtn(objsearch)
+      
     }
-    function Addbuttons(params) { return setBtn(params) }
-
+   
     function AddVal(params) {
 
         if (params.button === undefined) {
@@ -48,9 +35,9 @@ function List(props) {
 
         return (
             <div>
-                {props.btn.name ? (props.btn.subproduto.map(function (item) {
+                {props.btn.name ? (props.btn.subproduto.map(function (item,index) {
 
-                    return <button onClick={AddVal.bind(null, item)} className='btn btn-secondary'>{item.name}</button>
+                    return <button key={index} onClick={AddVal.bind(null, item)} className='btn btn-secondary'>{item.name}</button>
                 })
 
 
@@ -95,9 +82,9 @@ function List(props) {
             />
 
             <datalist id='lista'>
-                {props.produtos.map(function (p) {
+                {props.produtos.map(function (p,index) {
                     return (
-                        <option>{p.name}</option>
+                        <option key={index}>{p.name}</option>
                     )
                 })
 
