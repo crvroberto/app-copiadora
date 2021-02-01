@@ -6,15 +6,15 @@ import List from '../../components/ListProdutos/'
 import Table from '../../components/Table/Table'
 import Total from '../../components/Total Produtos/TotallProdutos'
 import Obs from '../../components/Modal/ModalObservacao'
-import Testeapi from '../../components/testeapi'
+
 
 function Pdv (){
-    document.body.onkeydown = function(e) {
+   /* document.body.onkeydown = function(e) {
         
         if (e.code === "F2" || e.code === 'F3') {
           e.preventDefault();
         }
-    }
+    }*/
     const [tabela, setTabela] = useState([]);
    
     function addTable (params) {    
@@ -34,7 +34,7 @@ function Pdv (){
         <Table tabela={tabela} remove={removeTable} setTabela={setTabela}></Table>
         <Total tabela={tabela}></Total>
         <Obs></Obs>
-        <Testeapi></Testeapi>
+       
         </React.Fragment>
         </div>
     )

@@ -24,14 +24,8 @@ function Table({ tabela, remove, setTabela }) {
           
               }
               function alteraPreco(valor) {
-                
-                
-                
-                console.log(valor)
-               
                 tabela[indice].precoAtual =parseFloat(valor)
-                 setTabela([...tabela]) 
-                console.log(tabela[indice].precoAtual)
+                 setTabela([...tabela])
                
               }
               

@@ -1,10 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect,useRef } from 'react'
 
 function List(props) {
 
 
+    console.log(props.keyCode)
     const [btn, setBtn] = useState({name: false })
     const [val, setVal] = useState({name: false })
+    const [pesquisa, setPesquisa] = useState('')
+    const listFocus = useRef()
+    const quantideFocus = useRef()
+
+    useEffect(()=>{
+
+        if(pesquisa === '')listFocus.current.focus()            
+        if(quantideFocus.current)quantideFocus.current.focus() 
+    
+    })
 
     function Limparstates(e) {
         setBtn({ name: false })
@@ -15,10 +26,10 @@ function List(props) {
     function Valuesearch(value) {
         
         const objsearch = props.produtos.find(product => product.name === value.target.value)
+        setPesquisa(value.target.value)
         objsearch === undefined ? console.log('Valuesearch') : setBtn(objsearch)
       
     }
-   
     function AddVal(params) {
 
         if (params.button === undefined) {
@@ -30,14 +41,13 @@ function List(props) {
         return setVal(params)
 
     }
-
     function Buttons(props) {
 
         return (
             <div>
                 {props.btn.name ? (props.btn.subproduto.map(function (item,index) {
 
-                    return <button key={index} onClick={AddVal.bind(null, item)} className='btn btn-secondary'>{item.name}</button>
+                    return <button key={index} onClick={AddVal.bind(null, item)} className='btn btn-secondary' >{item.name}</button>
                 })
 
 
@@ -47,9 +57,6 @@ function List(props) {
             </div>
         )
     }
-
-
-
     function Val(obj) {
 
 
@@ -66,7 +73,7 @@ function List(props) {
         return (
             <div>
                 {obj.val.name ? (
-                    <input type='number' onKeyUp={Enter.bind()} className='form-inline'></input>
+                    <input type='number' onKeyUp={Enter.bind()} className='form-inline' ref={quantideFocus}></input>
                 ) : (<div></div>)
 
                 }
@@ -78,7 +85,7 @@ function List(props) {
         <React.Fragment>
             <input type='search' placeholder='Produtos e Serviços'
                 id='pesquisa' list='lista' className='form-control dark'
-                onChange={Valuesearch.bind()} onClick={Limparstates.bind()}
+                onChange={Valuesearch.bind()} onClick={Limparstates.bind()} ref={listFocus}
             />
 
             <datalist id='lista'>
