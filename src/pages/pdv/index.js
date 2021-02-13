@@ -6,7 +6,7 @@ import List from '../../components/ListProdutos/'
 import Table from '../../components/Table/Table'
 import Total from '../../components/Total Produtos/TotallProdutos'
 import Obs from '../../components/Modal/ModalObservacao'
-
+import ModalSave from '../../components/Modal/ModalSave'
 
 function Pdv (){
    /* document.body.onkeydown = function(e) {
@@ -34,6 +34,7 @@ function Pdv (){
         <Table tabela={tabela} remove={removeTable} setTabela={setTabela}></Table>
         <Total tabela={tabela}></Total>
         <Obs></Obs>
+        <ModalSave tabela={tabela}></ModalSave>
        
         </React.Fragment>
         </div>

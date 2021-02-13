@@ -13,10 +13,8 @@ function Modalobs() {
     const inputRef = useRef()
   
  
-
-
     useEffect(()=>{
-      
+      document.addEventListener('keyup',(e)=>{if(e.key === 'F4'){handleShow()}})
       if(show){inputRef.current.focus()}
      
     })

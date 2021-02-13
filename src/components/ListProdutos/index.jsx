@@ -1,20 +1,23 @@
 import React, { useState,useEffect,useRef } from 'react'
 
+
 function List(props) {
 
-
-    console.log(props.keyCode)
     const [btn, setBtn] = useState({name: false })
     const [val, setVal] = useState({name: false })
     const [pesquisa, setPesquisa] = useState('')
     const listFocus = useRef()
     const quantideFocus = useRef()
+ 
 
     useEffect(()=>{
-
-        if(pesquisa === '')listFocus.current.focus()            
+     document.onkeydown = (e)=>{if(e.key === 'F3' && val){e.preventDefault();
+        
+        }}
+     //   document.addEventListener('keyup', (e)=>{if(e.key === 'F2'){console.log(e)}})
+        if(pesquisa === ''){listFocus.current.focus()    }        
         if(quantideFocus.current)quantideFocus.current.focus() 
-    
+        
     })
 
     function Limparstates(e) {
@@ -85,7 +88,7 @@ function List(props) {
         <React.Fragment>
             <input type='search' placeholder='Produtos e Serviços'
                 id='pesquisa' list='lista' className='form-control dark'
-                onChange={Valuesearch.bind()} onClick={Limparstates.bind()} ref={listFocus}
+                onChange={Valuesearch.bind()} onClick={Limparstates.bind()} ref={listFocus} onKeyUp={(e)=>{if(e.key === 'Enter'){console.log(e.target)}}}
             />
 
             <datalist id='lista'>
