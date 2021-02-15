@@ -87,7 +87,7 @@ function List(props) {
     return (
         <React.Fragment>
             <input type='search' placeholder='Produtos e Serviços'
-                id='pesquisa' list='lista' className='form-control dark'
+                id='pesquisa' list='lista' className='form-control form-control-lg'
                 onChange={Valuesearch.bind()} onClick={Limparstates.bind()} ref={listFocus} onKeyUp={(e)=>{if(e.key === 'Enter'){console.log(e.target)}}}
             />
 

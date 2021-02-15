@@ -32,7 +32,10 @@ console.log(params.tabela)
       const mudartroco = params =>setTroco(params.target.value) 
 
       function save() {
-        Axios.post('http://localhost:3030/api/vendas', {
+        const data = new Date()
+
+        Axios.post('http://10.0.0.107:3030/api/vendas', {
+          diaehora:data,
           objetos: params.tabela,
         })
         .then(function (response) {
