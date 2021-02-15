@@ -1,10 +1,11 @@
 import { Button,Modal } from 'react-bootstrap';
 import React, {useState,useEffect} from 'react'
 import Axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 function ModalSave (params){
-console.log(params.tabela)
+console.log(params)
   
     function valorTotal (){
 
@@ -20,6 +21,7 @@ console.log(params.tabela)
     const [valor, setValue] = useState(0)
     const [troco, setTroco] = useState(0)
     
+    
     const handleClose = () => setShow(false)
     function handleShow () {setShow(true)}
 
@@ -28,19 +30,24 @@ console.log(params.tabela)
         if(params.tabela.length > 0) {setValue(valorTotal)}
 
       })
+   
 
       const mudartroco = params =>setTroco(params.target.value) 
 
       function save() {
-        const data = new Date()
+        
 
-        Axios.post('http://10.0.0.107:3030/api/vendas', {
-          diaehora:data,
+        Axios.post('http://localhost:3030/api/vendas', {
+          obs: params.obs,
           objetos: params.tabela,
         })
         .then(function (response) {
           console.log(response);
-  })
+          
+          
+        })
+
+
       }
 
     return   (
@@ -67,9 +74,13 @@ console.log(params.tabela)
                 
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={save}>
+            <nav onClick={save}>
+            <Link to='/home' ><Button variant="secondary">
               Salvar
-            </Button>
+            </Button></Link>   
+              
+            </nav>
+            
             
           </Modal.Footer>
         </Modal>

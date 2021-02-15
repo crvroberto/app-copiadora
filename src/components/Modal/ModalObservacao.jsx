@@ -1,18 +1,19 @@
 import { Button,Modal } from 'react-bootstrap';
 import React, {useState,useRef,useEffect} from 'react'
 
-function Modalobs() {
+function Modalobs({obs,setObs}) {
+  
   
     const [show, setShow] = useState(false)
-    const [valor, setValue] = useState('')
+    
   
     const handleClose = () => setShow(false)
     function handleShow () {setShow(true)}
-    const mudarValor = params => setValue(params.target.value)
+    const mudarValor = params => setObs(params.target.value)
 
     const inputRef = useRef()
-  
- 
+    
+    
     useEffect(()=>{
       document.addEventListener('keyup',(e)=>{if(e.key === 'F4'){handleShow()}})
       if(show){inputRef.current.focus()}
@@ -32,7 +33,7 @@ function Modalobs() {
           <Modal.Body>
           <div class="form-group">
     <label for="exampleFormControlTextarea1"></label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" onChange={mudarValor} ref={inputRef}>{valor}</textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" onChange={mudarValor} ref={inputRef}>{obs}</textarea>
       
           </div>
      

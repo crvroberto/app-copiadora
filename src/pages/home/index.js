@@ -7,22 +7,15 @@ function Home (){
   
 const [vendas,setVendas] = useState([])
 
-
-useEffect(
-    
-        async ()=>{
-        const data = await axios.get('http://10.0.0.107:3030/api/vendas')
-      
-            setVendas(data.data )
-            console.log(data)
+useEffect(async ()=>{
+        await axios.get('http://localhost:3030/api/vendas')
+            .then(res=>{
+                setVendas(res.data )
+                console.log('res')
+            })
+           
           },[])
-
-          
-    
-
-
-console.log(vendas)
-
+console.log('teste')
 
     return(
         <React.Fragment>

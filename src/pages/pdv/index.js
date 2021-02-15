@@ -16,7 +16,8 @@ function Pdv (){
         }
     }*/
     const [tabela, setTabela] = useState([]);
-   
+    const [obs, setObs] = useState('')
+
     function addTable (params) {    
         
         return setTabela([...tabela, {...params}])
@@ -33,8 +34,8 @@ function Pdv (){
         <List produtos={Produtos} addTable={addTable} ></List>
         <Table tabela={tabela} remove={removeTable} setTabela={setTabela}></Table>
         <Total tabela={tabela}></Total>
-        <Obs></Obs>
-        <ModalSave tabela={tabela}></ModalSave>
+        <Obs obs={obs} setObs={setObs}></Obs>
+        <ModalSave tabela={tabela} obs={obs}></ModalSave>
        
         </React.Fragment>
         </div>
