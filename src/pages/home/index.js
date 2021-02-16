@@ -8,11 +8,18 @@ function Home (){
 const [vendas,setVendas] = useState([])
 
 useEffect(async ()=>{
+    
+    setTimeout(async function(){ 
         await axios.get('http://localhost:3030/api/vendas')
             .then(res=>{
                 setVendas(res.data )
-                console.log('res')
+                console.log(res.data)
             })
+
+     }, 200)
+
+
+        
            
           },[])
 console.log('teste')

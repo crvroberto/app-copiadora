@@ -35,7 +35,6 @@ console.log(params)
       const mudartroco = params =>setTroco(params.target.value) 
 
       function save() {
-        
 
         Axios.post('http://localhost:3030/api/vendas', {
           obs: params.obs,
@@ -43,12 +42,21 @@ console.log(params)
         })
         .then(function (response) {
           console.log(response);
-          
-          
-        })
+                 
+        })      }
 
+        function savePedido(){
 
-      }
+          Axios.post('http://localhost:3030/api/pedidos', {
+            obs: params.obs,
+            objetos: params.tabela,
+          })
+          .then(function (response) {
+            console.log(response);
+                   
+          })    
+
+        }
 
     return   (
         <>
@@ -76,7 +84,13 @@ console.log(params)
           <Modal.Footer>
             <nav onClick={save}>
             <Link to='/home' ><Button variant="secondary">
-              Salvar
+              Salvar Venda
+            </Button></Link>   
+              
+            </nav>
+            <nav onClick={savePedido}>
+            <Link to='/pedidos' ><Button variant="secondary">
+              Salvar Pedido
             </Button></Link>   
               
             </nav>
