@@ -1,16 +1,13 @@
 function Total({tabela}) {
 
     function valorTotal (){
-      const values = Object.values(tabela).reduce(function(acc,tabela){
+      const values = Object.values(tabela).reduce((acc,tabela) =>{
 
             return (acc + (tabela.precoAtual * tabela.quantidade))
         },0)
        return values.toFixed(2)
         
     }
-   
-    
-    
 
 return(
     <>

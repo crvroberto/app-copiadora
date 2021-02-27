@@ -15,7 +15,7 @@ function Pdv (){
           e.preventDefault();
         }
     }*/
-    const [tabela, setTabela] = useState([]);
+    const [tabela, setTabela] = useState([])
     const [obs, setObs] = useState('')
 
     function addTable (params) {    
@@ -30,7 +30,7 @@ function Pdv (){
     }
     return(<div>
         <React.Fragment >
-        <Menubar  onKeyUp = {function(i){console.log(i)}}></Menubar>
+        <Menubar></Menubar>
         <List produtos={Produtos} addTable={addTable} ></List>
         <Table tabela={tabela} remove={removeTable} setTabela={setTabela}></Table>
         <Total tabela={tabela}></Total>

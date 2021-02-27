@@ -1,6 +1,6 @@
 import { Button,Modal } from 'react-bootstrap';
 import React, {useState,useEffect} from 'react'
-import Axios from 'axios'
+import Axios from '../../services/api'
 import { Link } from 'react-router-dom'
 
 
@@ -36,7 +36,7 @@ console.log(params)
 
       function save() {
 
-        Axios.post('http://localhost:3030/api/vendas', {
+        Axios.post('/vendas', {
           obs: params.obs,
           objetos: params.tabela,
         })
@@ -47,7 +47,7 @@ console.log(params)
 
         function savePedido(){
 
-          Axios.post('http://localhost:3030/api/pedidos', {
+          Axios.post('/pedidos', {
             obs: params.obs,
             objetos: params.tabela,
           })

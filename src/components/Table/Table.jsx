@@ -2,17 +2,13 @@ import Modal from '../../components/Modal/Modal'
 
 function Table({ tabela, remove, setTabela }) {
 
-  console.log(tabela)
-
-  
 
 
   return (
     <div>
       <table className='table table-dark'>
         <tbody>
-          {tabela.length > 0 ? (
-            tabela.map(function (item, indice) {
+          {tabela.length > 0 ? (tabela.map((item, indice) => {
 
               if(tabela[indice].precoAtual === null){
              

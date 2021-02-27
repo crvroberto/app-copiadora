@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import Menubar from '../../components/MenuBar/index'
-import axios from 'axios'
+import axios from '../../services/api'
 import ListPedidos from '../../components/ListaVendas/ListaPedidos'
 
 function Pedidos (){
@@ -11,7 +11,7 @@ function Pedidos (){
     useEffect(async ()=>{
 
         setTimeout(async function(){  
-            await axios.get('http://localhost:3030/api/pedidos')
+            await axios.get('/pedidos')
             .then(res=>{
                 setPedidos(res.data )
                 

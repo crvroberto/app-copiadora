@@ -7,14 +7,29 @@
                 preco: [{quantidade: [0,0.50]},{quantidade: [10,0.30]},{quantidade: [50,0.20]},], precoAtual: null},
         ]},            
         {name: 'BOLETO', subproduto: [
-            {name: 'Fatura', preco: {0: 0.50, 20: 0.20, 40:0.15, 50: 0.10}},
-            {name: 'Outros', preco: {0: 0.50, 20: 0.20, 40:0.15, 50: 0.10}}, ] },
+            {name: 'Fatura', 
+                preco: [{quantidade: [0,2.00]}], precoAtual: null},
+         ] },
         {name: 'PLASTIFICAÇÃO', subproduto: [
-            {name: 'RG', preco: {0: 0.50, 20: 0.20, 40:0.15, 50: 0.10}},
-            {name: 'A4', preco: {0: 0.50, 20: 0.20, 40:0.15, 50: 0.10}}, ] },
+            {name: 'RG', 
+            preco: [{quantidade: [0,2.00]}], precoAtual: null},
+            {name: 'A4', 
+                preco: [{quantidade: [0,3.00]}], precoAtual: null} ] },
         {name: 'ENCADERNAÇÃO', subproduto: [
-            {name: 'até 25 FL.', preco: {0: 0.50, 20: 0.20, 40:0.15, 50: 0.10}},
-            {name: 'até 50 FL.' , preco: {0: 0.50, 20: 0.20, 40:0.15, 50: 0.10}}, ] },
+            {name: 'até 25 FL.', 
+                preco: [{quantidade: [0,2.00]}], precoAtual: null},
+                {name: 'até 50 FL.', 
+                preco: [{quantidade: [0,3.00]}], precoAtual: null},
+                {name: 'até 100 FL.', 
+                preco: [{quantidade: [0,4.00]}], precoAtual: null},
+                {name: 'até 200 FL.', 
+                preco: [{quantidade: [0,5.00]}], precoAtual: null},
+                {name: 'até 300 FL.', 
+                preco: [{quantidade: [0,6.00]}], precoAtual: null},
+                {name: 'até 400 FL.', 
+                preco: [{quantidade: [0,7.00]}], precoAtual: null},
+                
+            ] },
 
   ]
 
