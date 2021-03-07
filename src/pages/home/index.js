@@ -10,7 +10,7 @@ const [vendas,setVendas] = useState([])
 
 useEffect(async ()=>{
     
-    setTimeout(async function(){ 
+    setTimeout(async () => { 
         await axios.get('/vendas')
             .then(res=>{
                 setVendas(res.data )
@@ -18,10 +18,6 @@ useEffect(async ()=>{
             })
 
      }, 200)
-
-
-        
-           
           },[])
 
 

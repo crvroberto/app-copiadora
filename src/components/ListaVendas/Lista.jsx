@@ -31,10 +31,9 @@ function List({ vendas }) {
                         const date = item.data.substr(0, 10)
                         const hora = parseFloat(item.data.substr(11, 2)) - 3
 
-                        function RendizaVendas() {
+                        return (
 
-                            return (
-                                <tr key={indice}>
+                            <tr key={indice}>
                                     <td>{date}</td>
                                     <td>{(hora) + item.data.substr(13, 3)}</td>
                                     <td>{item.objetos[0].name}</td>
@@ -46,10 +45,7 @@ function List({ vendas }) {
                                         pathname: "/edit", state: { item: item }
                                     }}><FiEdit3 /></Link></td>
                                 </tr>
-                            )
-                        }
-                        return (
-                            <RendizaVendas></RendizaVendas>
+                            
 
                         )
                     })}

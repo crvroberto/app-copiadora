@@ -1,4 +1,5 @@
-
+import { FiEdit3 } from 'react-icons/fi'
+import { Link } from 'react-router-dom';
 function List ({pedidos}) {
 
 
@@ -16,7 +17,7 @@ function List ({pedidos}) {
             <table className="table table-dark table-hover">
                 <tbody>
                     <tr><td>Data:</td> <td>Hora:</td> <td>Itens:</td> 
-                    <td>Total Final:</td><td>Observações:</td><td>Vendedor:</td><td>Desconto:</td> </tr> 
+                    <td>Total Final:</td><td>Observações:</td><td>Vendedor:</td><td>Desconto:</td> <td></td></tr> 
                                        
                     {
                     pedidos.map((item,indice)=>{
@@ -38,6 +39,9 @@ function List ({pedidos}) {
                                     <td>{item.obs}</td>
                                     <td>funcionário</td>
                                     <td>desconto</td>
+                                    <td><Link to={{
+                                        pathname: "/editPedidos", state: { item: item }
+                                    }}><FiEdit3 /></Link></td>
                                 </tr>
                                 
                             )

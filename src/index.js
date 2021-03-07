@@ -5,6 +5,8 @@ import Home from './pages/home'
 import Pdv from './pages/pdv'
 import Pedidos from './pages/pedidos'
 import Edit from './pages/edit'
+import EditPedidos from './pages/editPedidos'
+import Clients from './pages/Clients/index'
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
 
 ReactDOM.render(
@@ -15,6 +17,8 @@ ReactDOM.render(
         <Route path="/pdv" component={Pdv}/>
         <Route path="/pedidos" component={Pedidos} />
         <Route path="/edit" component={Edit} />
+        <Route path="/editPedidos" component={EditPedidos} />
+        <Route path="/clients" component={Clients}></Route>
     </Switch>
     </BrowserRouter>
   ,document.getElementById('root')
