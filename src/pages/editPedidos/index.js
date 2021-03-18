@@ -10,7 +10,7 @@ function EditPedidos (props){
     
     const [tabela, setTabela] = useState([])
     const [obs, setObs] = useState('')
-
+    
     
     const addTable = params => setTabela([...tabela, { ...params }])
 

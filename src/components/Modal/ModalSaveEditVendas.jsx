@@ -1,11 +1,10 @@
 import { Button,Modal } from 'react-bootstrap';
 import React, {useState,useEffect} from 'react'
 import Axios from '../../services/api'
-import { Link } from 'react-router-dom'
+
 
 
 function ModalSave (params){
-console.log(params)
   
     function valorTotal (){
 
@@ -26,24 +25,19 @@ console.log(params)
     function handleShow () {setShow(true)}
 
     useEffect(()=>{
-        document.addEventListener('keyup',(e)=>{if(e.key === 'F2'){handleShow()}})
-        if(params.tabela.length > 0) {setValue(valorTotal)}
+      document.onkeyup = (e)=>{
+        if(e.key === 'F2'){
+        if (show === false) {setShow(true)};
+        if (show === true && params.tabela.length > 0){saveEditVenda()}
+        
+      }
+    }
+        if(params.tabela.length > 0 && valor === 0) {setValue(valorTotal)}
 
       })
    
 
       const mudartroco = params =>setTroco(params.target.value) 
-
-     /* function save() {
-
-        Axios.post('/vendas', {
-          obs: params.obs,
-          objetos: params.tabela,
-        })
-        .then(function (response) {
-          console.log(response);
-                 
-        })      }*/
 
         function saveEditVenda(){
 
@@ -51,9 +45,8 @@ console.log(params)
             obs: params.obs,
             objetos: params.tabela,
           })
-          .then(function (response) {
-            console.log(response);
-                   
+          .then((response)=>{    
+            params.history.push("/home")
           })    
 
         }
@@ -83,14 +76,10 @@ console.log(params)
           </Modal.Body>
           <Modal.Footer>
           
-            <nav onClick={saveEditVenda}>
-            <Link to='/home' ><Button variant="secondary">
-              Salvar Edição de Venda
-            </Button></Link>   
-              
-            </nav>
-            
-            
+            <Button variant="secondary" onClick={saveEditVenda}>
+              Salvar Edição de Venda - F2
+            </Button>
+                       
           </Modal.Footer>
         </Modal>
       </>
