@@ -1,5 +1,6 @@
 import { FiEdit3 } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import {Table} from 'react-bootstrap'
 
 function List({ vendas }) {
 
@@ -11,8 +12,8 @@ function List({ vendas }) {
     })
 
     return (
-        <div>
-            <table className="table table-dark table-hover">
+        
+            <Table bordered striped hover variant='dark'>
                 <tbody>
                     <tr>
                         <td>Data:</td> 
@@ -51,8 +52,8 @@ function List({ vendas }) {
                     })}
 
                 </tbody>
-            </table>
-        </div>
+            </Table>
+        
 
 
     )

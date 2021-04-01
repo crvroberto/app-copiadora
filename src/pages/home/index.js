@@ -26,8 +26,8 @@ useEffect(()=>{
 
     document.onkeydown = (e)=>{
         if(e.key === 'F3'){e.preventDefault(); history.push('/pdv') }
-        if(e.key ==='F1'){e.preventDefault()
-        }
+        if(e.key ==='F1')e.preventDefault()
+        if(e.key ==='F8'){history.push('/pedidos')}
     }
     
             

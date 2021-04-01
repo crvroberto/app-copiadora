@@ -20,8 +20,10 @@ console.log(showSave)
       if (showSave === false) {setShowSave(true)};
       if (showSave === true && params.tabela.length > 0){save()}
     }
-      if(e.key === 'F3' && params.tabela.lenght > 0){
-        savePedido()}
+      if(e.key === 'F3'){
+        if(showSave === true && params.tabela.length > 0) savePedido();
+      
+      }
   }
     if (params.tabela.length > 0) { setValue(valorTotal) };
 

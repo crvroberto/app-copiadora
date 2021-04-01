@@ -68,6 +68,7 @@ function List(props) {
                 const valordoinput = parseFloat(event.target.value)
                 parseFloat(valordoinput)
                 obj.val.quantidade = valordoinput
+                obj.val.nameAlfa = pesquisa
                 props.addTable(obj.val)
             }
 

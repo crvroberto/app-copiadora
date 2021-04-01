@@ -2,7 +2,7 @@ import { Button,Modal } from 'react-bootstrap';
 import React, {useState} from 'react'
 
 function Example({item,alteraPreco}) {
-  console.log(alteraPreco)
+  
     const [show, setShow] = useState(false);
     const [valor, setValue] = useState(0);
   

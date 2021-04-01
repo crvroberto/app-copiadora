@@ -1,12 +1,18 @@
 import { Link } from 'react-router-dom'
+import ModalUsers from '../../components/Modal/ModalUsers'
+import {Button} from 'react-bootstrap'
+
 function menu () {
+
 
 return(
     <nav className="navbar navbar-dark bg-dark">
-        <Link to='/home'><button className='btn btn-secondary'> Home - F1 </button></Link>    
-        <Link to='/pdv'> <button className='btn btn-secondary'>     Pdv - F3  </button></Link>
-        <Link to='/pedidos'> <button className='btn btn-secondary'>    Pedidos   </button></Link>
-        <Link to='/clients'> <button className='btn btn-secondary'>    Clientes   </button></Link>
+        <Link to='/home'><Button className='btn btn-secondary'> Home - F1 </Button></Link>    
+        <Link to='/pdv'> <Button className='btn btn-secondary'>     Pdv - F3  </Button></Link>
+        <Link to='/pedidos'> <Button className='btn btn-secondary'>    Pedidos - F8  </Button></Link>
+        <Link to='/clients'> <Button className='btn btn-secondary'>    Clientes   </Button></Link>
+        <ModalUsers></ModalUsers>
+        
 
 
     </nav>

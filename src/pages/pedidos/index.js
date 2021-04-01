@@ -10,7 +10,7 @@ function Pedidos (){
 
     useEffect(async ()=>{
 
-        setTimeout(async function(){  
+        setTimeout(async ()=>{  
             await axios.get('/pedidos')
             .then(res=>{
                 setPedidos(res.data )
@@ -26,7 +26,7 @@ function Pedidos (){
         return(
             <React.Fragment>
             <Menubar></Menubar>
-            <ListPedidos pedidos={pedidos}></ListPedidos>
+            <ListPedidos pedidos={pedidos} setPedidos={setPedidos}></ListPedidos>
           
             
             </React.Fragment>
