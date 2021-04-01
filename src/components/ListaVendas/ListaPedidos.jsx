@@ -22,7 +22,7 @@ function List({ pedidos, setPedidos }) {
 
 
     function Colapse(params) {
-        
+
         return (
             params.indice === indice ? (
 
@@ -90,29 +90,30 @@ function List({ pedidos, setPedidos }) {
             ) : <div></div>)
     }
     class Teste extends React.PureComponent {
-        render(){
-        return (
-            <table>
-              <thead>
-               <h1> <th>column 1</th></h1>
-                <th>column 1</th>
-                <th>column 1</th>
-                <th>column 1</th>
-                <th>column 1</th>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>data 1</td>
-                  <td>data 1</td>
-                  <td>data 1</td>
-                  <td>data 1</td>
-                  <td>data 1</td>
-                
-                </tr>
-              </tbody>
-            </table>
-          )
-        }}
+        render() {
+            return (
+                <table>
+                    <thead>
+                        <h1> <th>column 1</th></h1>
+                        <th>column 1</th>
+                        <th>column 1</th>
+                        <th>column 1</th>
+                        <th>column 1</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>data 1</td>
+                            <td>data 1</td>
+                            <td>data 1</td>
+                            <td>data 1</td>
+                            <td>data 1</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            )
+        }
+    }
     return (
 
         <Table bordered striped hover variant='dark'>
@@ -137,16 +138,12 @@ function List({ pedidos, setPedidos }) {
 
                     return (
                         <React.Fragment>
-                           
-                            <tr key={indice} onClick={(e) => { 
-                                console.log(e)              
+
+                            <tr key={indice} onClick={(e) => {
                                 setIndice(indice)
-                                if(e.target.localName === "td"){
+                                if (e.target.localName === "td") {
                                     setOpen(!open)
-                                }
-                                 
-                                 
-                                }}
+                                }}}
                                 aria-controls={indice}
                                 aria-expanded={open}>
                                 <td>{date}</td>
@@ -156,12 +153,11 @@ function List({ pedidos, setPedidos }) {
                                 <td>{item.obs}</td>
                                 <td></td>
                                 <td>desconto</td>
-                                <td>    
-                                <ReactToPrint 
-                                    trigger={()=> <Button variant='dark'><FiPrinter /></Button>} 
-                                    content={()=>tabela.current}/>
-                                <div style={{display:'none'}}><Teste ref={tabela}></Teste></div>
-                               </td>
+                                <td><ReactToPrint
+                                        trigger={() => <Button variant='dark'><FiPrinter /></Button>}
+                                        content={() => tabela.current} />
+                                    <div style={{ display: 'none' }}><Teste ref={tabela}></Teste></div>
+                                </td>
 
                             </tr>
 

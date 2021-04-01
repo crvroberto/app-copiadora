@@ -35,7 +35,7 @@ useEffect(()=>{
     return(
         <React.Fragment>
         <Menubar></Menubar>
-        <ListVendas vendas={vendas}></ListVendas>
+            <ListVendas vendas={vendas} setVendas={setVendas}></ListVendas>
         
       
         
