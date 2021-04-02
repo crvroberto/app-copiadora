@@ -9,19 +9,18 @@ import Total from '../../components/Total Produtos/TotallProdutos'
 import Obs from '../../components/Modal/ModalObservacao'
 import ModalSave from '../../components/Modal/ModalSave'
 import { useHistory } from "react-router";
-
+import {Button} from 'react-bootstrap'
 
 function Pdv (){
+
     const [tabela, setTabela] = useState([])
-    
     const [obs, setObs] = useState('')
     const history = useHistory()
 
     useEffect(()=>{
-       
-
         document.onkeydown = (e)=>{
             if(e.key === 'F1'){ e.preventDefault(); history.push('/home') }
+            if(e.key === 'F8'){ e.preventDefault(); history.push('/pedidos') }
             
         }
     })
@@ -55,14 +54,13 @@ function Pdv (){
                
               }
               
-
               return (
-                <tr key={tabela.index}>
+                <tr key={indice}>
                   <td> {item.name} </td>
                   <td> Quant: {item.quantidade}</td>
                   <td><Modal item={item} alteraPreco={alteraPreco}></Modal></td>
                   <td> Total: {(item.precoAtual * item.quantidade).toFixed(2) }</td>
-                  <td> <button className='btn btn-danger' onClick={removeTable.bind(null, item, indice)}>X</button> </td>
+                  <td> <Button variant='danger' onClick={removeTable.bind(null, item, indice)}>X</Button> </td>
                 </tr>
               )
             })) : (<tr></tr>

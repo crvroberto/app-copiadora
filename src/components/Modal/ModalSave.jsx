@@ -13,7 +13,7 @@ function ModalSave(params) {
 
   const handleClose = () => setShowSave(false)
   const handleShow = () => setShowSave(true)
-console.log(showSave)
+
   useEffect(() => {
     document.onkeyup = (e)=>{
       if(e.key === 'F2'){
@@ -81,13 +81,12 @@ console.log(showSave)
         <Modal.Body>
 
 
-          <div class="list-group"></div>
-          <button type="button" class="list-group-item list-group-item-action">
-            Soma: <input type="number" value={valor}></input><br></br>
+          <Button variant='dark'>
+            Soma: {valor}<br></br>
             <br></br>
             <strong>Desconto: </strong><input type="nymber" value={troco} onChange={mudartroco} />
 
-          </button>
+          </Button>
 
 
         </Modal.Body>

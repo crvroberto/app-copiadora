@@ -1,4 +1,5 @@
 import React, { useState,useEffect,useRef } from 'react'
+import {Button} from 'react-bootstrap'
 
 
 function List(props) {
@@ -8,34 +9,43 @@ function List(props) {
     const [pesquisa, setPesquisa] = useState('')
     const listFocus = useRef()
     const quantideFocus = useRef()
- 
 
     useEffect(()=>{
-     document.onkeydown = (e)=>{if(e.key === 'F3' && val){e.preventDefault();
         
-        }}
-     //   document.addEventListener('keyup', (e)=>{if(e.key === 'F2'){console.log(e)}})
-        if(pesquisa === ''){listFocus.current.focus()    }        
+        document.onkeydown = (e)=>{if(e.key === 'F3' && val)e.preventDefault()
+        
+        }
+        if(pesquisa === '')listFocus.current.focus()        
         if(quantideFocus.current)quantideFocus.current.focus() 
         
     })
 
-    function Limparstates(e) {
+    const Limparstates = e => {
         setBtn({ name: false })
         setVal({ name: false })
         e.target.value = ''
-
     }
-    function Valuesearch(value) {
+    const Valuesearch = value => {
         
         const objsearch = props.produtos.find(product => product.name === value.target.value)
         setPesquisa(value.target.value)
-        objsearch === undefined ? console.log('Valuesearch') : setBtn(objsearch)
+        if (objsearch)setBtn(objsearch)
       
     }
+    const Buttons = ({btn}) => {
+
+        return (
+            <div>
+                { btn?.subproduto?.map((item,index) =>
+                     <Button key={index} onClick={AddVal.bind(null, item)} variant='secondary' >{item.name}</Button>)
+                 }
+            </div>
+        )
+    }
+    
     function AddVal(params) {
 
-        if (params.button === undefined) {
+        if (!params.button) {
             let mudarbtn = { name: 'teste', subproduto: [params] }
 
             setBtn(mudarbtn)
@@ -43,22 +53,6 @@ function List(props) {
 
         return setVal(params)
 
-    }
-    function Buttons(props) {
-
-        return (
-            <div>
-                {props.btn.name ? (props.btn.subproduto.map(function (item,index) {
-
-                    return <button key={index} onClick={AddVal.bind(null, item)} className='btn btn-secondary' >{item.name}</button>
-                })
-
-
-                ) : (<div></div>)
-
-                }
-            </div>
-        )
     }
     function Val(obj) {
 
@@ -76,7 +70,7 @@ function List(props) {
 
         return (
             <div>
-                {obj.val.name ? (
+                {obj?.val?.name ? (
                     <input type='number' onKeyUp={Enter.bind()} className='form-inline' ref={quantideFocus}></input>
                 ) : (<div></div>)
 
@@ -87,20 +81,16 @@ function List(props) {
 
     return (
         <React.Fragment>
+            
             <input type='search' placeholder='Produtos e Serviços'
                 id='pesquisa' list='lista' className='form-control form-control-lg'
-                onChange={Valuesearch.bind()} onClick={Limparstates.bind()} ref={listFocus} onKeyUp={(e)=>{if(e.key === 'Enter'){console.log(e.target)}}}
+                onChange={Valuesearch.bind()} onClick={Limparstates.bind()} ref={listFocus}
             />
-
             <datalist id='lista'>
-                {props.produtos.map(function (p,index) {
-                    return (
-                        <option key={index}>{p.name}</option>
-                    )
-                })
+                {props.produtos.map((p,index) => <option key={index}>{p.name}</option>)}
 
-                }
             </datalist>
+            
             {<Buttons btn={btn}> </Buttons>}
             {<Val val={val}></Val>}
         </React.Fragment>
