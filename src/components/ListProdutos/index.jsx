@@ -12,9 +12,9 @@ function List(props) {
 
     useEffect(()=>{
         
-        document.onkeydown = (e)=>{if(e.key === 'F3' && val)e.preventDefault()
+       /* document.onkeydown = (e)=>{if(e.key === 'F3' && val)e.preventDefault()
         
-        }
+        }*/
         if(pesquisa === '')listFocus.current.focus()        
         if(quantideFocus.current)quantideFocus.current.focus() 
         

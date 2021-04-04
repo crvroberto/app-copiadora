@@ -39,8 +39,8 @@ function Edit(props) {
     }, [])
 useEffect(()=>{
     document.onkeydown = (e)=>{
-        if(e.key === 'F1'){e.preventDefault(); history.push('/home')}
-        if(e.key === 'F3'){e.preventDefault(); history.push('/pdv')}
+        /*if(e.key === 'F1'){e.preventDefault(); history.push('/home')}
+        if(e.key === 'F3'){e.preventDefault(); history.push('/pdv')}*/
     }
 })
 
