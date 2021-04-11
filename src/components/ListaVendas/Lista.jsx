@@ -88,7 +88,7 @@ function List({ vendas, setVendas }) {
                     const date = item.data.substr(0, 10)
                     const hora = parseFloat(item.data.substr(11, 2)) - 3
                     const itensTd = [date, (hora) + item.data.substr(13, 3), item.objetos[0].name,
-                        values.toFixed(2), item.obs, "funcionário", "desconto", <Button variant='dark'>
+                        values.toFixed(2), item.obs, item.funcionario, "desconto", <Button variant='dark'>
                             <FiPrinter /></Button>]
                             
                     return (

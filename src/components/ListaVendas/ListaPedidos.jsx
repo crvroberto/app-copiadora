@@ -35,7 +35,8 @@ function List({ pedidos, setPedidos }) {
                                     <Button variant="success" onClick={() => {
                                         Axios.post('/vendas', {
                                             obs: params.item.obs,
-                                            objetos: params.item.objetos
+                                            objetos: params.item.objetos,
+                                            funcionario: params.item.funcionario
                                         }).then((response) => {
                                             Axios.delete(`/pedidos/${params.item._id}`)
                                             setTimeout(async () => {
@@ -90,11 +91,14 @@ function List({ pedidos, setPedidos }) {
             ) : <div></div>)
     }
     class Teste extends React.PureComponent {
+        
         render() {
+            const item = this.props?.item
+            console.log(item.objetos[0].name)
             return (
                 <table>
                     <thead>
-                        <h1> <th>column 1</th></h1>
+                         <th><h1>{item.objetos[0].name}</h1></th>
                         <th>column 1</th>
                         <th>column 1</th>
                         <th>column 1</th>
@@ -151,12 +155,12 @@ function List({ pedidos, setPedidos }) {
                                 <td>{item.objetos[0].name}</td>
                                 <td>{values.toFixed(2)}</td>
                                 <td>{item.obs}</td>
-                                <td></td>
+                                <td>{item.funcionario}</td>
                                 <td>desconto</td>
                                 <td><ReactToPrint
                                         trigger={() => <Button variant='dark'><FiPrinter /></Button>}
                                         content={() => tabela.current} />
-                                    <div style={{ display: 'none' }}><Teste ref={tabela}></Teste></div>
+                                    <div style={{ display: 'none' }}><Teste ref={tabela} item={item}></Teste></div>
                                 </td>
 
                             </tr>

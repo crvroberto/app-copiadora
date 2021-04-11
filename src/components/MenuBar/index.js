@@ -1,12 +1,14 @@
 import { Link, useHistory } from 'react-router-dom'
 import ModalUsers from '../../components/Modal/ModalUsers'
 import {Button, Nav} from 'react-bootstrap'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { AuthContext } from '../../providers/auth'
 
 function Menu () {
-
+    const {user} = React.useContext(AuthContext)
     const history = useHistory()
 
+    if(user=== "Funcionário")history.push('/funcionarios')
 useEffect(()=>{
 
     document.onkeydown = e =>{

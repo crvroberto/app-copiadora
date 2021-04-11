@@ -1,7 +1,7 @@
 import { Button, Modal } from 'react-bootstrap';
 import React, { useState, useEffect } from 'react'
 import Axios from '../../services/api'
-
+import { AuthContext } from '../../providers/auth'
 
 function ModalSave(params) {
 
@@ -30,16 +30,17 @@ function ModalSave(params) {
   })
 
   const mudartroco = params => setTroco(params.target.value)
-  
+  const {user} = React.useContext(AuthContext)
 
   function save() {
 
     Axios.post('/vendas', {
       obs: params.obs,
       objetos: params.tabela,
+      funcionario: user,
     })
-      .then(function (response) {
-
+      .then((response) =>{
+          
         params.history.push("/home")
 
       })
@@ -49,8 +50,9 @@ function ModalSave(params) {
     Axios.post('/pedidos', {
       obs: params.obs,
       objetos: params.tabela,
+      funcionario: user
     })
-      .then(function (response) {
+      .then((response) =>{
 
         params.history.push("/pedidos")
 

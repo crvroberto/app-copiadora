@@ -7,9 +7,12 @@ import Pedidos from './pages/pedidos'
 import Edit from './pages/edit'
 import EditPedidos from './pages/editPedidos'
 import Clients from './pages/Clients/index'
+import Funcionario from './pages/funcionarios/index'
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
+import { AuthProvider } from './providers/auth'
 
 ReactDOM.render(
+  <AuthProvider>
  <BrowserRouter>
     <Switch>
       <Route path="/" exact={true} component={Home} />
@@ -19,8 +22,12 @@ ReactDOM.render(
         <Route path="/edit" component={Edit} />
         <Route path="/editPedidos" component={EditPedidos} />
         <Route path="/clients" component={Clients}></Route>
+        <Route path="/funcionarios" component={Funcionario}></Route>
+
+        
     </Switch>
     </BrowserRouter>
+   </AuthProvider>
   ,document.getElementById('root')
 );
 
