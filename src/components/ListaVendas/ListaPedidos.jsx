@@ -4,14 +4,17 @@ import { Table, Collapse, Button } from 'react-bootstrap';
 import { FiEdit3, FiPrinter } from 'react-icons/fi'
 import { Link } from 'react-router-dom';
 import Axios from '../../services/api'
-import ReactToPrint from 'react-to-print'
-
+import { useReactToPrint } from 'react-to-print'
+import Printer from '../Print/PrintPedidos'
+import moment from 'moment'
 
 function List({ pedidos, setPedidos }) {
 
     const [open, setOpen] = useState(false)
     const [indice, setIndice] = useState(null)
-    const tabela = useRef()
+    
+    const componentRef = useRef()    
+    const handlePrint = useReactToPrint({content: () => componentRef.current,},[componentRef.current])
 
     pedidos.sort((a, b) => {
 
@@ -64,6 +67,13 @@ function List({ pedidos, setPedidos }) {
                                 }}>Cancelar</Button>
 
                                 </td>
+                                <td><div style={{ display: 'none' }}>
+                                <Printer ref={componentRef} item={params.item}></Printer>
+                                </div>
+                                    <Button variant='dark' onClick={handlePrint}><FiPrinter /> </Button>
+                                        
+                                    
+                                </td>
                             </tr>
 
                             <tr>
@@ -90,34 +100,7 @@ function List({ pedidos, setPedidos }) {
 
             ) : <div></div>)
     }
-    class Teste extends React.PureComponent {
-        
-        render() {
-            const item = this.props?.item
-            console.log(item.objetos[0].name)
-            return (
-                <table>
-                    <thead>
-                         <th><h1>{item.objetos[0].name}</h1></th>
-                        <th>column 1</th>
-                        <th>column 1</th>
-                        <th>column 1</th>
-                        <th>column 1</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>data 1</td>
-                            <td>data 1</td>
-                            <td>data 1</td>
-                            <td>data 1</td>
-                            <td>data 1</td>
-
-                        </tr>
-                    </tbody>
-                </table>
-            )
-        }
-    }
+    
     return (
 
         <Table bordered striped hover variant='dark'>
@@ -137,9 +120,10 @@ function List({ pedidos, setPedidos }) {
                         return (acc + (tabela.precoAtual * tabela.quantidade))
                     }, 0)
 
-                    const date = item.data.substr(0, 10)
-                    const hora = parseFloat(item.data.substr(11, 2)) - 3
-
+                    const dateHours = moment(item.data).format()
+                    const date = dateHours.substr(0, 10)
+                    const hora = dateHours.substr(11, 2)
+                    console.log(item.objetos)
                     return (
                         <React.Fragment>
 
@@ -152,15 +136,13 @@ function List({ pedidos, setPedidos }) {
                                 aria-expanded={open}>
                                 <td>{date}</td>
                                 <td>{(hora) + item.data.substr(13, 3)}</td>
-                                <td>{item.objetos[0].name}</td>
+                                <td>{item.objetos[0]?.name}</td>
                                 <td>{values.toFixed(2)}</td>
                                 <td>{item.obs}</td>
                                 <td>{item.funcionario}</td>
                                 <td>desconto</td>
-                                <td><ReactToPrint
-                                        trigger={() => <Button variant='dark'><FiPrinter /></Button>}
-                                        content={() => tabela.current} />
-                                    <div style={{ display: 'none' }}><Teste ref={tabela} item={item}></Teste></div>
+                                <td>
+
                                 </td>
 
                             </tr>

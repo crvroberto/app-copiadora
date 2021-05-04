@@ -16,12 +16,13 @@ function ModalSave(params) {
 
   useEffect(() => {
     document.onkeyup = (e)=>{
-      if(e.key === 'F2'){
+      const tecla = e.key
+      if(tecla === 'F2'){
       if (showSave === false) {setShowSave(true)};
       if (showSave === true && params.tabela.length > 0){save()}
     }
-      if(e.key === 'F3'){
-        if(showSave === true && params.tabela.length > 0) savePedido();
+      if(tecla === 'F3'){
+        if(showSave === true && params.tabela.length > 0)  savePedido();
       
       }
   }

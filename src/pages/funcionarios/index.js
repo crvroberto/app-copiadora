@@ -11,7 +11,7 @@ function Func() {
     return (
         <React.Fragment>
             {funcionarios.map((f, idx) => {
-                return (<Button variant="dark" onClick={() => { setUser(f); history.push('/home') }}>
+                return (<Button variant="dark" onClick={() => { setUser(f); history.push('/home'); sessionStorage.setItem('funcionario',f) }}>
                     <Card bg='dark' style={{ width: '35rem' }}>
                                                <Card.Body>
                             <Card.Title>{f}</Card.Title>

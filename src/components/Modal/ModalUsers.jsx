@@ -23,7 +23,7 @@ function ModalUsers() {
           </Modal.Header>
           <Modal.Body>
             {funcionarios.map((f)=>{
-                return(<div><Button variant='dark' style={{minWidth: '100%'}} onClick={(e)=>{setUser(f);handleClose()}}>{f}</Button></div>)
+                return(<div><Button variant='dark' style={{minWidth: '100%'}} onClick={(e)=>{setUser(f);handleClose();sessionStorage.setItem('funcionario',f)}}>{f}</Button></div>)
             })}
 
           </Modal.Body>

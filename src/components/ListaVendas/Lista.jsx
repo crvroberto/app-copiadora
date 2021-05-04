@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { Table, Collapse } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import Axios from '../../services/api'
+import moment from 'moment'
+import Printerdpf from '../Print/printPdf'
 
 function List({ vendas, setVendas }) {
 
@@ -25,9 +27,9 @@ function List({ vendas, setVendas }) {
 
                 <Collapse in={params.open}>
 
-                    <Table style={{color:"white"}}id={params.indice}>
+                    <Table style={{ color: "white" }} id={params.indice}>
                         <tbody>
-                            <tr key={params.item._id+3}>
+                            <tr key={params.item._id + 3}>
                                 <td></td>
 
                                 <td><Link to={{
@@ -45,17 +47,19 @@ function List({ vendas, setVendas }) {
                                     }}>Cancelar
                                 </Button>
 
-                                </td>
+                                </td><Printerdpf></Printerdpf>
+                                <Button variant='dark'>
+                            <FiPrinter /></Button>
                             </tr>
 
-                            <tr key={params.item._id+4}>
+                            <tr key={params.item._id + 4}>
 
                                 <td>Nomes</td>
                                 <td>Quantidade</td>
                                 <td>Preço</td>
                             </tr>
 
-                            {params.item?.objetos?.map((i,indice) => (
+                            {params.item?.objetos?.map((i, indice) => (
                                 <tr key={indice}>
 
                                     <td>{i.nameAlfa} - {i.name}</td>
@@ -85,12 +89,13 @@ function List({ vendas, setVendas }) {
                     const values = Object.values(item.objetos).reduce((acc, tabela) => {
                         return (acc + (tabela.precoAtual * tabela.quantidade))
                     }, 0)
-                    const date = item.data.substr(0, 10)
-                    const hora = parseFloat(item.data.substr(11, 2)) - 3
+                    const dateHours = moment(item.data).format()
+                    const date = dateHours.substr(0, 10)
+                    const hora = dateHours.substr(11, 2)
+                    
                     const itensTd = [date, (hora) + item.data.substr(13, 3), item.objetos[0].name,
-                        values.toFixed(2), item.obs, item.funcionario, "desconto", <Button variant='dark'>
-                            <FiPrinter /></Button>]
-                            
+                        values.toFixed(2), item.obs, item.funcionario, "desconto",]
+
                     return (
                         <React.Fragment>
 
@@ -104,7 +109,7 @@ function List({ vendas, setVendas }) {
                                     return (<td key={indice}>{i}</td>)
                                 })}
                             </tr>
-                            <tr key={item._id +2}>
+                            <tr key={item._id + 2}>
                                 <td colSpan="8">
                                     <Colapse open={open} indice={indice} item={item}></Colapse>
                                 </td>

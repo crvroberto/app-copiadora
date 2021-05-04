@@ -10,11 +10,11 @@ function Menu () {
 
     if(user=== "Funcionário")history.push('/funcionarios')
 useEffect(()=>{
-
     document.onkeydown = e =>{
-    if(e.key === "F1"){e.preventDefault(); history.push('/home')}
-    if(e.key === "F3"){e.preventDefault(); history.push('/pdv')}
-    if(e.key === "F8"){history.push('/pedidos')}
+        const tecla = e.key
+    if(tecla === "F1"){e.preventDefault(); history.push('/home')}
+    if(tecla === "F3"){e.preventDefault(); history.push('/pdv')}
+    if(tecla === "F8"){history.push('/pedidos')}
 
 }
 })
